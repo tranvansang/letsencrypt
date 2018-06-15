@@ -1,8 +1,4 @@
-echo sleep 3
-sleep 3
-
 echo build starting nginx config
-
 
 echo replacing ___my.example.com___/$MY_DOMAIN_NAME
 echo replacing ___LETSENCRYPT_IP___/$LETSENCRYPT_PORT_80_TCP_ADDR
