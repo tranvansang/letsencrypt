@@ -3,11 +3,11 @@ services:
   nginx:
     build: nginx-image
     environment:
-      - MY_DOMAIN_NAME=app.carstay.jp
+        - MY_DOMAIN_NAME=test.astroslay.com
     ports:
       - "80:80"
       - "443:443"
-    commands: /run.sh
+    command: /run.sh
     volumes:
       - ./letscript/confg/:/etc/letsencrypt
       - ./letscript/lib:/var/lib/letscript

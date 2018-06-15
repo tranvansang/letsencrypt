@@ -1,22 +1,10 @@
-nginx:
-  build: nginx-image
-  environment:
-    - MY_DOMAIN_NAME=app.carstay.jp
-  mem_limit: 1g
-  cpu_shares: 256
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes_from:
-    - letsencrypt
-  commands: /init.sh
-letsencrypt:
-  build: certbot-image
-  environment:
-    - MY_DOMAIN_NAME=app.carstay.jp
-  command: /init.sh
-  volumes:
-    - ./letscript/confg/:/etc/letsencrypt
-    - ./letscript/lib:/var/lib/letscript
-  depends_on:
-   - nginx
+version: '3'
+services:
+    letsencrypt:
+      build: certbot-image
+      environment:
+        - MY_DOMAIN_NAME=test.astroslay.com
+      command: ["bash", "/init.sh"]
+      volumes:
+        - ./letscript/confg/:/etc/letsencrypt
+        - ./letscript/lib:/var/lib/letscript

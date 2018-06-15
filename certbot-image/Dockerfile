@@ -1,6 +1,5 @@
 FROM certbot/certbot
-COPY init.sh /
-COPY renew.sh /
-ENV MY_DOMAIN_NAME=app.carstay.jp
+COPY ./init.sh /
+COPY ./renew.sh /
 VOLUME /etc/letsencrypt /var/lib/letsencrypt
 EXPOSE 80 443

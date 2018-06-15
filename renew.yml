@@ -1,8 +1,23 @@
-letsencrypt:
-  build: certbot-image
-  environment:
-    - MY_DOMAIN_NAME=app.carstay.jp
-  command: /renew.sh
-  volumes:
-    - ./letscript/confg/:/etc/letsencrypt
-    - ./letscript/lib:/var/lib/letscript
+version: '3'
+services:
+    nginx:
+      build: nginx-image
+      environment:
+        - MY_DOMAIN_NAME=test.astroslay.com
+      ports:
+        - "80:80"
+        - "443:443"
+      volumes:
+        - ./letscript/confg/:/etc/letsencrypt
+        - ./letscript/lib:/var/lib/letscript
+      command: /init.sh
+    letsencrypt:
+      build: certbot-image
+      environment:
+            - MY_DOMAIN_NAME=test.astroslay.com
+      command: /renew.sh
+      volumes:
+        - ./letscript/confg/:/etc/letsencrypt
+        - ./letscript/lib:/var/lib/letscript
+      depends_on:
+       - nginx

@@ -1,7 +1,6 @@
 FROM nginx
 
-COPY start.sh /
+COPY init.sh /
+COPY run.sh /
 COPY nginx.conf /etc/nginx/
 COPY nginx-secure.conf /etc/nginx/
-
-CMD /start.sh
