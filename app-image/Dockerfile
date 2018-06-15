@@ -1,2 +1,7 @@
-FROM nginx
-COPY ./html /usr/share/nginx/html
+FROM node:carbon
+COPY . /app
+WORKDIR /app
+RUN yarn
+ENV NODE_ENV production
+CMD ["node","app.js"]
+EXPOSE 8080

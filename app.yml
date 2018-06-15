@@ -1,0 +1,23 @@
+version: '3'
+services:
+  nginx:
+    build: nginx-image
+    environment:
+      - MY_DOMAIN_NAME=app.carstay.jp
+    ports:
+      - "80:80"
+      - "443:443"
+    commands: /run.sh
+    volumes:
+      - ./letscript/confg/:/etc/letsencrypt
+      - ./letscript/lib:/var/lib/letscript
+  mongo:
+    image: mongo
+    volumes:
+      - /data/db
+    ports:
+      - "27017"
+  app:
+    build: app-image
+    ports:
+     - "80:8080"

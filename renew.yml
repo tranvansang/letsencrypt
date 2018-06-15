@@ -1,0 +1,8 @@
+letsencrypt:
+  build: certbot-image
+  environment:
+    - MY_DOMAIN_NAME=app.carstay.jp
+  command: /renew.sh
+  volumes:
+    - ./letscript/confg/:/etc/letsencrypt
+    - ./letscript/lib:/var/lib/letscript
