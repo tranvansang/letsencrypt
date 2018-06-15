@@ -11,12 +11,6 @@ services:
     volumes:
       - ./letscript/confg/:/etc/letsencrypt
       - ./letscript/lib:/var/lib/letscript
-  mongo:
-    image: mongo
-    volumes:
-      - /data/db
-    ports:
-      - "27017"
   app:
     build: app-image
     ports:
